@@ -22,7 +22,8 @@ $(document).ready(function(){
 		.closest('div.container').find('div.catalog__content').removeClass('catalog__content_active').eq($(this).index()).addClass('catalog__content_active');
 	});
 
-	/* $('.catalog-item__link').each(function(i) {
+	/* скрипт нижний но раскрытый 
+	$('.catalog-item__link').each(function(i) {
 		$(this).on('click', function(e) {
 			e.preventDefault();
 			$('.catalog-item__content').eq(i).toggleClass('catalog-item__content_active')
@@ -50,9 +51,27 @@ $(document).ready(function(){
 
 	toggleSlide('.catalog-item__link');
 	toggleSlide('.catalog-item__back');
-  }); 
 
-/* const slider = tns({
+	//modal
+
+	$('[data-modal=consultation]').on('click', function() {
+		$('.overlay, #consultation').fadeIn('slow');
+	});
+
+	$('.modal__close').on('click', function() {
+		$('.overlay, #consultation, #thanks, #order').fadeOut('slow')
+	});
+
+	$('.button_mini').each(function(i) {
+		$(this).on('click', function() {
+			$('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
+			$('.overlay, #order').fadeIn('slow');
+		});
+	});
+}); 
+
+/* скрипт к слику
+const slider = tns({
   container: '.carousel__inner',
   items: 1, 
   slideBy: 'page',
